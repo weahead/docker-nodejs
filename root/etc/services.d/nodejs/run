@@ -1,0 +1,35 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+
+importas -u NODE_ENV NODE_ENV
+
+backtick -i -n TARGET {
+  ifelse { s6-test "${NODE_ENV}" = "production" }
+  {
+    s6-echo -- "start"
+  }
+
+  ifelse { s6-test "${NODE_ENV}" = "development" }
+  {
+    s6-echo -- "dev"
+  }
+
+  ifelse { s6-test "${NODE_ENV}" = "test" }
+  {
+    s6-echo -- "test"
+  }
+
+  s6-echo -- ""
+}
+importas -u TARGET TARGET
+
+ifelse { s6-test "${TARGET}" = "" }
+{
+  foreground { s6-echo -- "NODE_ENV value of '${NODE_ENV}' not supported. Supported values: 'production', 'development', 'test'" }
+  exit 1
+}
+foreground {
+  s6-echo -- "Running 'npm run ${TARGET}'"
+}
+cd "/app" npm run ${TARGET}

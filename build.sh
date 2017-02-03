@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t weahead/nodejs:6.2.1 .
+docker build -t weahead/nodejs:6.9.5 .
