@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  nodejs:
+    build: .
+    image: weahead/nodejs:6.9.5
