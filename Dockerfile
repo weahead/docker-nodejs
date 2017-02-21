@@ -34,4 +34,6 @@ ONBUILD RUN npm install && npm cache clean
 
 ONBUILD COPY app/ /app/
 
+ONBUILD RUN chown -R node:node /app
+
 ONBUILD VOLUME /app/node_modules

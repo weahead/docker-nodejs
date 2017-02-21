@@ -32,4 +32,6 @@ ifelse { s6-test "${TARGET}" = "" }
 foreground {
   s6-echo -- "Running 'npm run ${TARGET}'"
 }
-cd "/app" npm run ${TARGET}
+cd "/app"
+s6-setuidgid node
+npm run ${TARGET}
