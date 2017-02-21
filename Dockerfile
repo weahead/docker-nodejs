@@ -18,14 +18,11 @@ RUN apk --no-cache add curl git \
   && rm -rf "$GNUPGHOME" /tmp/* \
   && apk del build-deps
 
-
 ENV NODE_ENV=production
 
 WORKDIR /app
 
 COPY root /
-
-RUN npm install -s -g nodemon && npm cache clean
 
 EXPOSE 3000
 
