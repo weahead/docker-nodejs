@@ -30,7 +30,7 @@ ENTRYPOINT ["/init"]
 
 ONBUILD COPY app/package.json /app/
 
-ONBUILD RUN npm install --dev -s && npm cache clean
+ONBUILD RUN npm install && npm cache clean
 
 ONBUILD COPY app/ /app/
 
