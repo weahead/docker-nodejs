@@ -5,7 +5,7 @@ LABEL maintainer "We ahead <docker@weahead.se>"
 ENV S6_VERSION=1.19.1.1\
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
-RUN apk --no-cache add curl \
+RUN apk --no-cache add curl git \
   && apk --no-cache add --virtual build-deps \
       gnupg \
   && cd /tmp \
