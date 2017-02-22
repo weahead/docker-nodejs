@@ -3,8 +3,9 @@
 with-contenv
 
 importas -u NODE_ENV NODE_ENV
+importas -D "" -u TARGET TARGET
 
-backtick -i -n TARGET {
+backtick -i -n DEFAULT_TARGET {
   ifelse { s6-test "${NODE_ENV}" = "production" }
   {
     s6-echo -- "start"
@@ -15,18 +16,20 @@ backtick -i -n TARGET {
     s6-echo -- "dev"
   }
 
-  ifelse { s6-test "${NODE_ENV}" = "test" }
+  if { s6-test "${NODE_ENV}" = "test" }
   {
     s6-echo -- "test"
   }
 
   s6-echo -- ""
 }
-importas -u TARGET TARGET
+importas -u DEFAULT_TARGET DEFAULT_TARGET
+
+importas -u -D "${DEFAULT_TARGET}" TARGET TARGET
 
 ifelse { s6-test "${TARGET}" = "" }
 {
-  foreground { s6-echo -- "NODE_ENV value of '${NODE_ENV}' not supported. Supported values: 'production', 'development', 'test'" }
+  foreground { s6-echo -- "Empty target not supported. Are you missing environment variable TARGET or NODE_ENV?" }
   exit 1
 }
 foreground {
