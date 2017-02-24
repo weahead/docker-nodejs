@@ -3,7 +3,6 @@
 with-contenv
 
 importas -u NODE_ENV NODE_ENV
-importas -D "" -u TARGET TARGET
 
 backtick -i -n DEFAULT_TARGET {
   ifelse { s6-test "${NODE_ENV}" = "production" }
