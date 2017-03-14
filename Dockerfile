@@ -5,7 +5,7 @@ LABEL maintainer "We ahead <docker@weahead.se>"
 ENV S6_VERSION=1.19.1.1\
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
-RUN apk --no-cache add curl git \
+RUN apk --no-cache add curl git su-exec \
   && apk --no-cache add --virtual build-deps \
       gnupg \
   && cd /tmp \
@@ -28,12 +28,17 @@ EXPOSE 3000
 
 ENTRYPOINT ["/init"]
 
-ONBUILD COPY app/package.json /app/
-
-ONBUILD RUN npm install && npm cache clean
-
 ONBUILD COPY app/ /app/
 
-ONBUILD RUN chown -R node:node /app
+ONBUILD RUN mkdir -p /app-npm && chown node:node /app-npm \
+  && cp /app/package.json /app-npm/package.json \
+  && cd /app-npm \
+  && su-exec node npm install \
+  && touch /home/node/.fix-npm-clean \
+  && su-exec node npm cache clean \
+  && rm /home/node/.fix-npm-clean \
+  && chown -R node:node /app \
+  && mv /app-npm/node_modules /app/node_modules \
+  && rm -rf /app-npm
 
 ONBUILD VOLUME /app/node_modules
