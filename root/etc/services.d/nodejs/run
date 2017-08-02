@@ -35,5 +35,6 @@ foreground {
   s6-echo -- "Running 'npm run ${TARGET}'"
 }
 cd "/app"
+s6-env HOME=/home/node
 s6-setuidgid node
 npm run ${TARGET}
