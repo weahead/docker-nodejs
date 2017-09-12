@@ -2,7 +2,7 @@ FROM node:6.9.5-alpine
 
 LABEL maintainer "We ahead <docker@weahead.se>"
 
-ENV S6_VERSION=1.19.1.1\
+ENV S6_VERSION=1.20.0.0\
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
 RUN apk --no-cache add curl git su-exec \
