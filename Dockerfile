@@ -28,17 +28,17 @@ EXPOSE 3000
 
 ENTRYPOINT ["/init"]
 
-ONBUILD COPY app/ /app/
+ONBUILD COPY app/package.json /app/package.json
 
-ONBUILD RUN mkdir -p /app-npm && chown node:node /app-npm \
-  && cp /app/package.json /app-npm/package.json \
-  && cd /app-npm \
+ONBUILD RUN chown node:node /app \
   && su-exec node npm install \
   && touch /home/node/.fix-npm-clean \
   && su-exec node npm cache clean \
-  && rm /home/node/.fix-npm-clean \
-  && chown -R node:node /app \
-  && mv /app-npm/node_modules /app/node_modules \
-  && rm -rf /app-npm
+  && rm /home/node/.fix-npm-clean
 
-ONBUILD VOLUME /app/node_modules
+ONBUILD COPY app/ /app-tmp
+
+ONBUILD RUN chown node:node /app-tmp \
+  && rm -rf /app-tmp/node_modules \
+  && cp -R /app-tmp/. /app/ \
+  && rm -rf /app-tmp
