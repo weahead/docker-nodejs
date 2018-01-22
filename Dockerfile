@@ -33,7 +33,7 @@ ONBUILD COPY app/package.json /app/package.json
 ONBUILD RUN chown node:node /app \
   && su-exec node npm install \
   && touch /home/node/.fix-npm-clean \
-  && su-exec node npm cache clean \
+  && su-exec node npm cache clean --force \
   && rm /home/node/.fix-npm-clean
 
 ONBUILD COPY app/ /app-tmp
