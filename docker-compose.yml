@@ -3,4 +3,4 @@ version: '2'
 services:
   nodejs:
     build: .
-    image: weahead/nodejs:10.y.z
+    image: weahead/nodejs:10.10.0
