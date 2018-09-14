@@ -1,6 +1,6 @@
-FROM node:6.9.5-alpine
+FROM node:x.y.z-alpine
 
-LABEL maintainer "We ahead <docker@weahead.se>"
+LABEL maintainer="We ahead <docker@weahead.se>"
 
 ENV S6_VERSION=1.20.0.0\
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2
