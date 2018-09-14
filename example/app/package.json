@@ -1,0 +1,11 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "dependencies": {
+    "nodemon": "*"
+  },
+  "scripts": {
+    "start":"node index.js",
+    "dev": "nodemon index.js"
+  }
+}
