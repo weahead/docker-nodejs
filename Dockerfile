@@ -1,4 +1,4 @@
-FROM node:x.y.z-alpine
+FROM node:8.y.z-alpine
 
 LABEL maintainer="We ahead <docker@weahead.se>"
 

@@ -2,7 +2,7 @@
 
 Base image for developing Node.js applications.
 
-[![Node.js x.x: x.y.z](https://img.shields.io/badge/Node.js--x.x:-x.y.z-green.svg)](https://github.com/weahead/docker-nodejs/tree/x.y.z)
+[![Node.js 8.x: 8.y.z](https://img.shields.io/badge/Node.js--x.x:-8.y.z-green.svg)](https://github.com/weahead/docker-nodejs/tree/8.y.z)
 
 ## Layout of this repository
 
