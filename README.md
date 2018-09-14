@@ -4,7 +4,7 @@ Base image for developing Node.js applications.
 
 [![Node.js 6.x: 6.9.5](https://img.shields.io/badge/Node.js--6.x:-6.9.5-green.svg)](https://github.com/weahead/docker-nodejs/tree/6.9.5)
 [![Node.js 7.x: 7.7.2](https://img.shields.io/badge/Node.js--7.x:-7.7.2-green.svg)](https://github.com/weahead/docker-nodejs/tree/7.7.2)
-[![Node.js 8.x: 8.9.3](https://img.shields.io/badge/Node.js--8.x:-8.9.3-green.svg)](https://github.com/weahead/docker-nodejs/tree/8.9.3)
+[![Node.js 8.x: 8.12.0](https://img.shields.io/badge/Node.js--8.x:-8.12.0-green.svg)](https://github.com/weahead/docker-nodejs/tree/8.12.0)
 
 ## Layout of this repository
 

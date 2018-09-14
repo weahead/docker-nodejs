@@ -1,3 +1,3 @@
-FROM weahead/nodejs:8.9.3
+FROM weahead/nodejs:8.12.0
 
 COPY root /
